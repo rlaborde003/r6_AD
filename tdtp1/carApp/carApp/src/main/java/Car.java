@@ -15,13 +15,17 @@ public class Car {
         return this.vitesse;
     }
 
+    private void getDetails() {
+        System.out.println("Modèle : " + modele);
+        System.out.println("Couleur : " + couleur);
+        System.out.println("Vitesse actuelle : " + vitesse);
+    }
+
     public void accelerer() {
         if (vitesse + GAP_SPEED <= MAX_SPEED) {
             vitesse += GAP_SPEED;
-            // afficher détails
-            System.out.println("Modèle : " + modele);
-            System.out.println("Couleur : " + couleur);
-            System.out.println("Vitesse actuelle : " + vitesse);
+            // print détails
+            getDetails();
         } else {
             System.out.println("La vitesse maximale est atteinte.");
         }
@@ -30,10 +34,8 @@ public class Car {
     public void ralentir() {
         if (vitesse - GAP_SPEED >= 0) {
             vitesse -= GAP_SPEED;
-            // afficher détails
-            System.out.println("Modèle : " + modele);
-            System.out.println("Couleur : " + couleur);
-            System.out.println("Vitesse actuelle : " + vitesse);
+            // print détails
+            getDetails();
         } else {
             System.out.println("La voiture est déjà à l'arrêt.");
         }
