@@ -18,21 +18,21 @@ public class ConducteurTest {
 
     @Test
     public void testDemarrerVoiture() {
-        Voiture voiture = new Voiture("Sedan", "Bleu");
+        Car voiture = new Car("Sedan", "Bleu");
         conducteur.demarrerVoiture(voiture);
         // How to assert that the demarrerVoiture method was called?
     }
 
     @Test
     public void testArreterVoiture() {
-        Voiture voiture = new Voiture("Sedan", "Bleu");
+        Car voiture = new Car("Sedan", "Bleu");
         conducteur.arreterVoiture(voiture);
         // How to assert that the arreterVoiture method was called?
     }
 
     @Test
     public void testChangerVitesse() {
-        Voiture voiture = new Voiture("Sedan", "Bleu");
+        Car voiture = new Car("Sedan", "Bleu");
 
         conducteur.changerVitesse(voiture, 80);
         assertThat(voiture.getVitesse()).isEqualTo(80);

@@ -4,11 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class VoitureTest {
 
-    private Voiture voiture;
+    private Car voiture;
 
     @BeforeEach
     public void setUp() {
-        voiture = new Voiture("Sedan", "Bleu");
+        voiture = new Car("Sedan", "Bleu");
     }
 
     @Test

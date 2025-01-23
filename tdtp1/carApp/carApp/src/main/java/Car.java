@@ -1,9 +1,9 @@
-public class Voiture {
+public class Car {
     private String modele;
     private String couleur;
     private int vitesse;
 
-    public Voiture(String model, String color) {
+    public Car(String model, String color) {
         this.modele = model;
         this.couleur = color;
         this.vitesse = 0;

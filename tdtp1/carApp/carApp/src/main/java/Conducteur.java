@@ -11,7 +11,7 @@ public class Conducteur {
         return age >= 10;
     }
 
-    public void demarrerVoiture(Voiture voiture) {
+    public void demarrerVoiture(Car voiture) {
         if (estAdulte()) {
             System.out.println(nom + " démarre la voiture.");
         } else {
@@ -19,11 +19,11 @@ public class Conducteur {
         }
     }
 
-    public void arreterVoiture(Voiture voiture) {
+    public void arreterVoiture(Car voiture) {
         System.out.println(nom + " arrête la voiture.");
     }
 
-    public void changerVitesse(Voiture voiture, int nouvelleVitesse) {
+    public void changerVitesse(Car voiture, int nouvelleVitesse) {
         System.out.println(nom + " change la vitesse de la voiture à " + nouvelleVitesse);
         int vitesseActuelle;
         if (voiture.getVitesse() >= nouvelleVitesse) {
