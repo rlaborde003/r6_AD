@@ -6,7 +6,7 @@ public class FeeCalculator {
 
     public static double calculateFee(Visitor visitor, TicketType ticketType) {
         double fee = 0.0;
-        FeeStrategy strategy;
+        FeeStrategy strategy = null;
         int i = 0;
         boolean trouve = false;
 
