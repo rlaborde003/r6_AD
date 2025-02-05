@@ -5,6 +5,12 @@ import java.util.List;
 
 public class Customer {
 
+    private static List<MovieStrategy> strategies = List.of (
+            new ChildrenMovieStrategy(),
+            new NewReleaseMovieStrategy(),
+            new RegularMovieStrategy()
+    );
+
     private String _name;
     private List<Rental> _rentals = new ArrayList<Rental>();
 
@@ -21,6 +27,7 @@ public class Customer {
     }
 
     public String statement() {
+        MovieStrategy strategy;
         double totalAmount = 0;
         int frequentRenterPoints = 0;
         String result = "Rental Record for " + getName() + "\n";
@@ -28,21 +35,21 @@ public class Customer {
         for (Rental each : _rentals) {
             double thisAmount = 0;
 
-            //determine amounts for each line
-            switch (each.getMovie().getPriceCode()) {
-                case Movie.REGULAR:
-                    thisAmount += 2;
-                    if (each.getDaysRented() > 2)
-                        thisAmount += (each.getDaysRented() - 2) * 1.5;
-                    break;
-                case Movie.NEW_RELEASE:
-                    thisAmount += each.getDaysRented() * 3;
-                    break;
-                case Movie.CHILDRENS:
-                    thisAmount += 1.5;
-                    if (each.getDaysRented() > 3)
-                        thisAmount += (each.getDaysRented() - 3) * 1.5;
-                    break;
+            int cpteurStrategies = 0; // 1 seule stratégie doit être trouvée
+            int i = 0;
+            // Recherche de l'unique stratégie qui convient au visitor concerné = parcours complet, en comptant les stratégies trouvées
+            // Attention : si plusieurs stratégies sont valides, exception
+            while (i < strategies.size()) {
+                strategy = strategies.get(i);
+                if (strategy.isSameCode(each.getMovie().getPriceCode())) {                 // si stratégie convient
+                    thisAmount = strategy.getAmount(each, thisAmount);       // appliquer le tarif correspondant
+                    cpteurStrategies++;
+                }
+                i++;
+            }
+            if (cpteurStrategies != 1)
+            {
+                throw new IllegalStateException();
             }
 
             // add frequent renter points
@@ -62,4 +69,5 @@ public class Customer {
 
         return result;
     }
+
 }
