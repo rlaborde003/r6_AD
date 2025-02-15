@@ -3,6 +3,10 @@ package movierental;
 import java.util.ArrayList;
 import java.util.List;
 
+enum Movie {
+    NEW_RELEASE, REGULAR, CHILDRENS
+}
+
 public class Customer {
 
     private static List<MovieStrategy> strategies = List.of (
@@ -47,10 +51,7 @@ public class Customer {
                 }
                 i++;
             }
-            if (cpteurStrategies != 1)
-            {
-                throw new IllegalStateException();
-            }
+            if (cpteurStrategies != 1) { throw new IllegalStateException(); }
 
             // add frequent renter points
             frequentRenterPoints++;
